@@ -24,7 +24,7 @@ Adds an administrative unit member.
 
 ```powershell
 Add-EntraAdministrativeUnitMember
- -MemberId <String>
+ -RefObjectId <String>
  -AdministrativeUnitId <String>
  [<CommonParameters>]
 ```
@@ -47,7 +47,7 @@ In delegated scenarios, adding a user, group, or device to an administrative uni
 Connect-Entra -Scopes 'AdministrativeUnit.ReadWrite.All'
 $administrativeUnit = Get-EntraAdministrativeUnit -Filter "DisplayName eq '<administrativeunit-display-name>'"
 $user = Get-EntraUser -UserId 'SawyerM@contoso.com'
-Add-EntraAdministrativeUnitMember -AdministrativeUnitId $administrativeUnit.Id -MemberId $user.Id
+Add-EntraAdministrativeUnitMember -AdministrativeUnitId $administrativeUnit.Id -RefObjectId $user.Id
 ```
 
 This example demonstrates adding an administrative unit member. Use `Get-EntraAdministrativeUnit` to find the administrative unit ID and `Get-EntraUser` to find the user ID.
@@ -61,7 +61,7 @@ This example demonstrates adding an administrative unit member. Use `Get-EntraAd
 Connect-Entra -Scopes 'AdministrativeUnit.ReadWrite.All'
 $administrativeUnit = Get-EntraAdministrativeUnit -Filter "DisplayName eq '<administrativeunit-display-name>'"
 $group = Get-EntraGroup -SearchString 'Sales and Marketing'
-Add-EntraAdministrativeUnitMember -AdministrativeUnitId $administrativeUnit.Id -MemberId $group.Id
+Add-EntraAdministrativeUnitMember -AdministrativeUnitId $administrativeUnit.Id -RefObjectId $group.Id
 ```
 
 This example demonstrates adding an administrative unit member. Use `Get-EntraAdministrativeUnit` to find the administrative unit ID and `Get-EntraGroup` to find the group ID.
@@ -75,7 +75,7 @@ This example demonstrates adding an administrative unit member. Use `Get-EntraAd
 Connect-Entra -Scopes 'AdministrativeUnit.ReadWrite.All'
 $administrativeUnit = Get-EntraAdministrativeUnit -Filter "DisplayName eq '<administrativeunit-display-name>'"
 $device = Get-EntraDevice -SearchString 'ContosoDesktop01'
-Add-EntraAdministrativeUnitMember -AdministrativeUnitId $administrativeUnit.Id -MemberId $device.Id
+Add-EntraAdministrativeUnitMember -AdministrativeUnitId $administrativeUnit.Id -RefObjectId $device.Id
 ```
 
 This example demonstrates adding an administrative unit member. Use `Get-EntraAdministrativeUnit` to find the administrative unit ID and `Get-EntraDevice` to find the device ID.
@@ -101,7 +101,7 @@ Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
-### -MemberId
+### -RefObjectId
 
 Specifies the unique ID of the specific Microsoft Entra ID object that are as owner/manager/member.
 
